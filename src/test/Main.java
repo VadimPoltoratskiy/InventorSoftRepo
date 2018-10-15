@@ -32,13 +32,13 @@ public class Main {
 
 
         NumberContainer data = new NumberContainer();
-        data.setListOfIntegers(new ArrayList<Integer>(Arrays.<Integer>asList(1, 2, 3, 4, 5)));
+        data.setListOfIntegers(new ArrayList<>(Arrays.<Integer>asList(1, 2, 3, 4, 5)));
         data.ShowFoo();
         CountUtils.count(data.getListOfIntegers());
 
 
-        ListUtils.swapElemWithImmutable(new ArrayList<Integer>(Arrays.asList(10, 20, 30, 40, 50)), new ArrayList<Integer>(Arrays.asList(11, 22, 33, 44, 55)), 1);
-        ListUtils.swapElem(new ArrayList<Integer>(Arrays.asList(100, 200, 300, 400, 500)), new ArrayList<Integer>(Arrays.asList(111, 222, 333, 444, 555)), 2);
+        ListUtils.swapElemWithImmutable(new ArrayList<>(Arrays.asList(10, 20, 30, 40, 50)), new ArrayList<Integer>(Arrays.asList(11, 22, 33, 44, 55)), 1);
+        ListUtils.swapElem(new ArrayList<>(Arrays.asList(100, 200, 300, 400, 500)), new ArrayList<Integer>(Arrays.asList(111, 222, 333, 444, 555)), 2);
 
     }
 }
