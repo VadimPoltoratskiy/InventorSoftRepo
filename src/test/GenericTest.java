@@ -1,6 +1,5 @@
-import org.junit.jupiter.api.Test;
+package test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GenericTest {
