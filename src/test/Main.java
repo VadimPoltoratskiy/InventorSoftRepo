@@ -1,8 +1,9 @@
 package test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import com.sun.corba.se.spi.orbutil.threadpool.Work;
+
+import java.util.*;
+import java.util.function.Predicate;
 /*
 
 1) Create class-container for any types;
@@ -18,27 +19,40 @@ public class Main {
 
     public static void main(String[] args) {
 
-        List<Cat> cats = new ArrayList<>();
-        cats.add(new Cat());
-        cats.add(new Cat());
+/*        ListUtils.swapElemWithImmutable(new ArrayList<>(Arrays.asList(10, 20, 30, 40, 50)), new ArrayList<Integer>(Arrays.asList(11, 22, 33, 44, 55)), 1);
+        ListUtils.swapElem(new ArrayList<>(Arrays.asList(100, 200, 300, 400, 500)), new ArrayList<Integer>(Arrays.asList(111, 222, 333, 444, 555)), 2);
 
-        GenericTest.useAnimals(cats);
+        List<Integer> listOfIntegers = Arrays.asList(1, 2, 3, 4, 5);
+        System.out.println(Collections.max(listOfIntegers));
 
-        List<Animal> animals = new ArrayList<>();
-        animals.add(new Animal());
-        animals.add(new Cat());
-
-        GenericTest.useAnimals(animals);
-
+//1
+        AnyTypeContainer container = new AnyTypeContainer(new ArrayList<>(Arrays.asList(1, 0.5, 300, 16.7f, 500l)));
+        container.showFooContainer();
+        System.out.println(container.getElemByIndex(0));
+//2
+        SingleNumberContainer<Double> doubleNumber = new SingleNumberContainer<>(0.7);
+        doubleNumber.showFoo();
 
         NumberContainer data = new NumberContainer();
         data.setListOfIntegers(new ArrayList<>(Arrays.<Integer>asList(1, 2, 3, 4, 5)));
         data.ShowFoo();
-        CountUtils.count(data.getListOfIntegers());
+        CountUtils.countSum(data.getListOfNumbers());
+//6*/
 
 
-        ListUtils.swapElemWithImmutable(new ArrayList<>(Arrays.asList(10, 20, 30, 40, 50)), new ArrayList<Integer>(Arrays.asList(11, 22, 33, 44, 55)), 1);
-        ListUtils.swapElem(new ArrayList<>(Arrays.asList(100, 200, 300, 400, 500)), new ArrayList<Integer>(Arrays.asList(111, 222, 333, 444, 555)), 2);
+        List<Worker> workers = new ArrayList<>();
+        workers.add(new Worker("John", 30, 2000));
+        workers.add(new Worker("Bruce", 31, 3000));
+        workers.add(new Worker("Lee", 32, 4000));
+
+        Worker w = workers.stream()
+                .max((w1, w2) -> Integer.compare(w1.getAge(), w2.getAge()))
+                .get();
+        w.showFoo();
+
+        workers.stream()
+                .reduce((w1, w2) -> w1.getSalary() > w2.getSalary() ? w1 : w2)
+                .ifPresent(System.out::println);
 
     }
 }
