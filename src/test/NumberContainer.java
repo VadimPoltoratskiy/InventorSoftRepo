@@ -24,4 +24,11 @@ public class  NumberContainer {
         Number elem = listOfNumbers.get(index);
         return elem;
     }
+
+    @Override
+    public String toString() {
+        return "NumberContainer{" +
+                "listOfNumbers=" + listOfNumbers +
+                '}';
+    }
 }
